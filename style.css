@@ -1,0 +1,170 @@
+/* ------------------------ MENU --------------------------- */
+
+body,
+ul,
+li,
+p {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+}
+
+body{
+  margin-bottom: 100px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu li {
+  margin-left: 10px;
+}
+
+.menu li a {
+  display: block;
+  padding: 10px;
+}
+
+/* ----------------------- PADRÃO ------------------------ */
+
+h1 {
+  text-align: center;
+  margin-top: 100px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  background: #1d1e20;
+}
+
+/* ----------------------- FLEXBOX 1 ------------------------ */
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flex > div {
+  flex: 1 1 200px;
+  margin: 0 10px;
+}
+
+/* ------------------------- GRID 1 -------------------------- */
+
+.grid1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 800px;
+  padding: 10px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.grid1 > div:nth-child(n + 4){
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.grid1 > div.anuncio{
+  grid-column: 1;
+  grid-row: 2 / 5;
+  display: block;
+}
+
+@media (max-width: 600px) { /*quando chegar nesse tamanho: */
+  .grid1{
+    grid-template-columns: repeat(2, 1fr); /* passa a ter 2 cards por linha*/
+  }
+  .grid1 > div:nth-child(n + 4){
+    display: block; /*volta a ser uma lista*/
+  }
+  .grid1 > div.anuncio{ /* tira o anuncio das 3 linhas que estava ocupando*/
+    grid-column: auto;
+    grid-row: auto;
+    order: -1; /*muda a ordem visualmente*/
+  }
+}
+
+/* ------------------------- GRID 2 -------------------------- */
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 200px; /*a 1 img fica grande e o restante ocupa o tamanho em px que for dado, sendo em uma coluna*/
+  gap: 20px;
+  max-width: 800px;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.sidebar > div{
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) { /*quando chegar nesse tamanho: */
+  .grid2{
+    grid-template-columns: 1fr; /*todos fica do mesmo tamanho, em 1 coluna*/
+  }
+  .sidebar{ /*ficar um ao lado do outro*/
+    display: flex;
+    overflow-x: scroll; /*barrinha de rolagem abaixo*/
+  }
+  .sidebar > div{
+    flex: 1 0 200px; /* PESQUISAAAAAAAAAAAAAAAR */
+    margin: 0 10px;
+  }
+}
+
+/* ------------------------- GRID 3 -------------------------- */
+
+.grid3{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 10px;
+}
+
+.grid3-item:nth-child(1){/*pegando o 1º filho*/
+  grid-row: 1/3; /*esse item ocupar da linha 1 até alinha 3*/
+}
+
+.grid3-item{
+  display: grid;
+}
+
+.grid3-item img{ 
+  grid-column: 1; /*posicionar a img na coluna 1*/
+  grid-row: 1/3; /*esse item ocupar da linha 1 até alinha 3*/
+}
+
+.grid3-item p{
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  color: white;
+  grid-column: 1;
+  grid-row: 2; /*ocupa a 2 linha*/
+  align-self: end;
+}
